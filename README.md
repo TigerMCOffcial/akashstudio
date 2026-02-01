@@ -1,3 +1,3 @@
 # akashstudio
 
-Welcome to Akash Studio A Gaming Company.
+Akash Studio Owned By https://youtube.com/@AkashPlays_XD
