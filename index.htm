@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akash Studio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    cursor:none;
+}
+
+body{
+    font-family:'Press Start 2P', cursive;
+    background:#0f0f0f;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* PARTICLES */
+#particles{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-2;
+}
+
+/* FLOATING BLOCKS */
+.block{
+    position:fixed;
+    width:40px;
+    height:40px;
+    background:linear-gradient(145deg,#2ecc71,#27ae60);
+    box-shadow:0 0 20px #2ecc71;
+    animation: float 6s infinite alternate ease-in-out;
+    opacity:0.25;
+    z-index:-1;
+}
+
+@keyframes float{
+    from{transform:translateY(0) rotate(0deg);}
+    to{transform:translateY(-60px) rotate(180deg);}
+}
+
+/* MAIN */
+.container{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+}
+
+/* LOGO */
+.logo-container{
+    margin-bottom:40px;
+    perspective:1000px;
+}
+
+.logo{
+    width:180px;
+    animation:
+        floatLogo 4s ease-in-out infinite alternate,
+        rotateLogo 20s linear infinite;
+    filter: drop-shadow(0 0 20px #00ff99)
+            drop-shadow(0 0 40px #00ff66);
+}
+
+@keyframes floatLogo{
+    from{transform:translateY(0);}
+    to{transform:translateY(-20px);}
+}
+
+@keyframes rotateLogo{
+    from{transform:rotateY(0deg);}
+    to{transform:rotateY(360deg);}
+}
+
+/* TITLE */
+h1{
+    font-size:2rem;
+    margin-bottom:30px;
+    background:linear-gradient(45deg,#00ffcc,#00ff66);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 10px #00ffcc;}
+    to{text-shadow:0 0 30px #00ff66;}
+}
+
+p{
+    max-width:600px;
+    line-height:1.8;
+    font-size:0.7rem;
+    margin-bottom:40px;
+}
+
+/* BUTTONS */
+.buttons a{
+    display:inline-block;
+    margin:15px;
+    padding:15px 25px;
+    text-decoration:none;
+    color:white;
+    border:2px solid #00ff99;
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.buttons a::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:#00ff99;
+    transition:0.4s;
+    z-index:-1;
+}
+
+.buttons a:hover::before{
+    left:0;
+}
+
+.buttons a:hover{
+    color:black;
+    box-shadow:0 0 25px #00ff99;
+    transform:scale(1.1);
+}
+
+/* SECTIONS */
+.section{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:1rem;
+    opacity:0;
+    transform:translateY(100px);
+    transition:1s;
+}
+
+.section.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* CURSOR */
+.cursor{
+    width:15px;
+    height:15px;
+    border:2px solid #00ffcc;
+    border-radius:50%;
+    position:fixed;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    z-index:999;
+}
+
+.cursor-follower{
+    width:35px;
+    height:35px;
+    border:2px solid #00ffcc;
+    border-radius:50%;
+    position:fixed;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    transition:0.15s;
+    opacity:0.5;
+    z-index:998;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- Floating Background Blocks -->
+<div class="block" style="top:10%;left:5%;"></div>
+<div class="block" style="top:70%;left:80%;"></div>
+<div class="block" style="top:40%;left:50%;"></div>
+
+<div class="container">
+
+    <!-- YOUR LOGO -->
+    <div class="logo-container">
+        <img src="logo.png" class="logo" alt="Akash Studio Logo">
+    </div>
+
+    <h1>AKASH STUDIO</h1>
+
+    <p>
+        We create powerful Minecraft mods and early access projects.
+        Join our community and experience next-level gameplay innovation.
+    </p>
+
+    <div class="buttons">
+        <a href="https://youtube.com/@AkashPlays_XD" target="_blank">YouTube</a>
+        <a href="https://patreon.com/AkashStudios" target="_blank">Patreon</a>
+        <a href="https://modrinth.com/organization/akashstudio" target="_blank">Modrinth</a>
+    </div>
+</div>
+
+<div class="section">⚡ Custom Weapons & Blocks</div>
+<div class="section">🔥 Early Access Builds</div>
+<div class="section">🎮 Join The Adventure</div>
+
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<script>
+/* CURSOR */
+const cursor = document.querySelector('.cursor');
+const follower = document.querySelector('.cursor-follower');
+
+document.addEventListener('mousemove', e=>{
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    follower.style.left = e.clientX + 'px';
+    follower.style.top = e.clientY + 'px';
+});
+
+/* PARTICLES */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+
+class Particle{
+    constructor(){
+        this.x = Math.random()*canvas.width;
+        this.y = Math.random()*canvas.height;
+        this.size = Math.random()*3+1;
+        this.speedX = Math.random()*1-0.5;
+        this.speedY = Math.random()*1-0.5;
+    }
+    update(){
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if(this.x<0||this.x>canvas.width) this.speedX*=-1;
+        if(this.y<0||this.y>canvas.height) this.speedY*=-1;
+    }
+    draw(){
+        ctx.fillStyle="#00ff99";
+        ctx.fillRect(this.x,this.y,this.size,this.size);
+    }
+}
+
+function init(){
+    for(let i=0;i<120;i++){
+        particlesArray.push(new Particle());
+    }
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particlesArray.forEach(p=>{
+        p.update();
+        p.draw();
+    });
+    requestAnimationFrame(animate);
+}
+
+init();
+animate();
+
+/* SCROLL ANIMATION */
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll',()=>{
+    sections.forEach(section=>{
+        const pos = section.getBoundingClientRect().top;
+        if(pos < window.innerHeight - 100){
+            section.classList.add('active');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
