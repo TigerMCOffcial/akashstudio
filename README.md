@@ -1,8 +1,17 @@
-# akashstudio
+Akash Studio, owned by a YouTube channel:
+🔗 https://youtube.com/@AkashPlays_XD
 
-Akash Studio Owned By https://youtube.com/@AkashPlays_XD
-we currently make game mods for early access spend 5$ on patron : https://patreon.com/AkashStudios and we are making mods on minecraft 
+We currently make game mods for early access.
+Support us for $5 on Patreon:
+🔗 https://patreon.com/AkashStudios
 
-visit even https://aksl.qzz.io user id: https://akashplays.wixsite.com/en-us/profile/tigermc202518279/profile
+We are making mods for Minecraft.
 
-Even Modrinth https://modrinth.com/organization/akashstudio
+Visit:
+🔗 https://aksl.qzz.io
+
+User ID:
+🔗 https://akashplays.wixsite.com/en-us/profile/tigermc202518279/profile
+
+Also on Modrinth:
+🔗 https://modrinth.com/organization/akashstudio
