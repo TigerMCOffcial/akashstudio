@@ -11,7 +11,7 @@ Visit:
 🔗 https://aksl.qzz.io
 
 User ID:
-🔗 https://akashplays.wixsite.com/en-us/profile/tigermc202518279/profile
+🔗 https://akashplays.wixsite.com/en-us/id/tigermc202518279/profile
 
 Also on Modrinth:
 🔗 https://modrinth.com/organization/akashstudio
